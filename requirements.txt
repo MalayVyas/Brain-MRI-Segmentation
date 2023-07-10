@@ -1,3 +1,4 @@
 opencv-contrib-python
+matplotlib==3.4.1
 streamlit==1.0.0
 tensorflow==2.10.0
