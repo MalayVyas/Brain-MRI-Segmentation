@@ -1,5 +1,5 @@
 numpy
-opencv-python
+opencv-contrib-python
 easyocr==1.4.1
 matplotlib==3.4.3
 matplotlib-inline==0.1.3
