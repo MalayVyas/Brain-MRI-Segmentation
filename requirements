@@ -5,3 +5,4 @@ matplotlib==3.4.1
 pandas==1.2.3
 scikit-learn
 tensorflow==2.11.0 
+opencv-python
