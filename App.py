@@ -35,7 +35,7 @@ def jaccard_distance(y_true, y_pred):
 
 
 st.title("Brain MRI Segmentation App")
-model = load_model('unet_brain_mri_seg.hdf5', custom_objects={
+model = load_model('https://github.com/MalayVyas/Brain-MRI-Segmentation/releases/download/ModelWeights/unet_brain_mri_seg.hdf5', custom_objects={
         'dice_coef_loss': dice_coefficients_loss, 'iou': iou, 'dice_coef': dice_coefficients})
 
 im_height = 256
