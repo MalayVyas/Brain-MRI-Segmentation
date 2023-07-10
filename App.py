@@ -34,34 +34,28 @@ def jaccard_distance(y_true, y_pred):
     return -iou(y_true_flatten, y_pred_flatten)
 
 
-def main():
-    st.title("Brain MRI Segmentation App")
-    model = load_model('https://github.com/MalayVyas/Brain-MRI-Segmentation/releases/download/ModelWeights/unet_brain_mri_seg.hdf5', custom_objects={
+st.title("Brain MRI Segmentation App")
+model = load_model('unet_brain_mri_seg.hdf5', custom_objects={
         'dice_coef_loss': dice_coefficients_loss, 'iou': iou, 'dice_coef': dice_coefficients})
 
-    im_height = 256
-    im_width = 256
+im_height = 256
+im_width = 256
 
-    file = st.file_uploader("Upload file", type=[
+file = st.file_uploader("Upload file", type=[
                             "csv", "png", "jpg"], accept_multiple_files=True)
-    if file:
-        for i in file:
-            st.header("Original Image:")
-            st.image(i)
-            content = i.getvalue()
-
-            image = np.asarray(bytearray(content), dtype="uint8")
-            image = cv2.imdecode(image, cv2.IMREAD_COLOR)
-
-            img2 = cv2.resize(image, (im_height, im_width))
-            img3 = img2/255
-            img4 = img3[np.newaxis, :, :, :]
-            if st.button("Predict Output:"):
-                pred_img = model.predict(img4)
-                st.header("Predicted Image:")
-                st.image(pred_img)
-            else:
-                continue
-
-
-main()
+if file:
+    for i in file:
+        st.header("Original Image:")
+        st.image(i)
+        content = i.getvalue()
+        image = np.asarray(bytearray(content), dtype="uint8")
+        image = cv2.imdecode(image, cv2.IMREAD_COLOR)
+        img2 = cv2.resize(image, (im_height, im_width))
+        img3 = img2/255
+        img4 = img3[np.newaxis, :, :, :]
+        if st.button("Predict Output:"):
+            pred_img = model.predict(img4)
+            st.header("Predicted Image:")
+            st.image(pred_img)
+        else:
+            continue
