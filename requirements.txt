@@ -1,4 +1,6 @@
-opencv-contrib-python
-matplotlib==3.4.1
-streamlit==1.0.0
+numpy==1.21.6
+opencv_python==4.6.0.66
+streamlit==1.23.1
 tensorflow==2.10.0
+tensorflow_gpu==2.10.0
+tensorflow_intel==2.11.0
